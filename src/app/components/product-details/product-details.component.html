@@ -27,27 +27,34 @@
 
 <br>
 <!-- <button (click)="updateComp()">Update</button> -->
-
-<br>
-<br>
-<label for="name">Name: </label>
-<input class="name-value" id="name" type="text" [formControl]="name" placeholder={{this.users.name}} value={{this.users.name}}>
-<br>
-<br>
-<label for="name">Type: </label>
-<input class="name-cost" id="type" type="text" [formControl]="type" value={{this.users.type}} placeholder={{this.users.type}}>
-<br>
-<br>
-<label for="name">Description: </label>
-<input class="name-cost" id="description" type="text" [formControl]="description" value={{this.users.description}} placeholder={{this.users.description}}>
-<br>
-<br>
-<label for="name">Color: </label>
-<input class="name-cost" id="color" type="text" [formControl]="color" value={{this.users.color}} placeholder={{this.users.color}}>
-<br>
-<br>
-<label for="name">Cost: </label>
-<input class="name-cost" id="cost" type="text" [formControl]="cost" value={{this.users.price}} placeholder={{this.users.price}}>
-<br>
-<br>
-<button type="button" (click)="updateName()">Update Name</button>
+<form #myForm="ngForm">
+	<div class="form-group"><br>
+		<br>
+		<label for="name">Name: </label>
+		<input required class="name-value" id="name" type="text" [formControl]="name" placeholder={{this.users.name}}
+			value={{this.users.name}} maxlength="56">
+		<br>
+		<br>
+		<label for="name">Type: </label>
+		<input required class="name-cost" id="type" type="text" [formControl]="type" value={{this.users.type}}
+			placeholder={{this.users.type}} maxlength="56">
+		<br>
+		<br>
+		<label for="name">Description: </label>
+		<input required class="name-cost" id="description" type="text" [formControl]="description"
+			value={{this.users.description}} placeholder={{this.users.description}} maxlength="56">
+		<br>
+		<br>
+		<label for="name">Color: </label>
+		<input required class="name-cost" id="color" type="text" [formControl]="color" value={{this.users.color}}
+			placeholder={{this.users.color}} maxlength="56">
+		<br>
+		<br>
+		<label for="name">Cost: </label>
+		<input required class="name-cost" id="cost" type="text" [formControl]="cost" value={{this.users.price}}
+			placeholder={{this.users.price}}>
+		<br>
+		<br>
+		<button [disabled]="!myForm.form.valid" type="submit" (click)="updateName()">Update Name</button>
+	</div>
+</form>

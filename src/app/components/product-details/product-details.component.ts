@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import * as data from '../../../product-fixtures.json';
 import { ActivatedRoute } from "@angular/router";
 import { Router } from '@angular/router';
@@ -16,12 +16,14 @@ export class ProductDetailsComponent implements OnInit {
 	color = new FormControl('');
 	description = new FormControl('');
 	type = new FormControl('');
+	disableBtn = false;
 
   constructor(
 	private route: ActivatedRoute,
 	private router: Router
 	) {
 	this.users = Array.from(data);
+	this.disableBtn = false;
    }
 
   ngOnInit(): void {
@@ -31,7 +33,9 @@ export class ProductDetailsComponent implements OnInit {
 	this.users = Array.from(data);
 	this.users = this.users.find((user:any) => user.sku === id);
 	console.log(this.users)
+	let disableBtn = false;
   }
+
 
   updateName() {
 	// get the value of the html field
